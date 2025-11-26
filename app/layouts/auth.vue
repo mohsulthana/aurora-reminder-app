@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 p-4">
+  <div class="relative min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-950">
     <UButton
       icon="i-lucide-chevron-left"
       to="/"
