@@ -36,7 +36,7 @@ async function handleSignOut() {
               name="i-lucide-wallet"
               class="h-6 w-6 text-primary"
             />
-            <span class="text-xl font-bold">SubTracker</span>
+            <span class="text-xl font-bold">Aurora</span>
           </NuxtLink>
 
           <!-- Navigation Links -->
