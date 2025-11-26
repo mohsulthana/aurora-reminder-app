@@ -194,14 +194,8 @@ useSeoMeta({
     </UCard>
 
     <!-- Create Subscription Modal -->
-    <UModal v-model="isOpen">
-      <UCard class="sm:max-w-md">
-        <template #header>
-          <h3 class="text-lg font-bold">
-            Add Subscription
-          </h3>
-        </template>
-
+    <UModal v-model:open="isOpen" title="Add Subscription">
+      <template #body>
         <UForm
           :schema="schema"
           :state="state"
@@ -304,7 +298,7 @@ useSeoMeta({
             </UButton>
           </div>
         </UForm>
-      </UCard>
+      </template>
     </UModal>
   </div>
 </template>

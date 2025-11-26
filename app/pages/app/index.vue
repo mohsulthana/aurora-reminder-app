@@ -250,45 +250,9 @@ useSeoMeta({
       </div>
     </UCard>
 
-    <!-- Quick Actions -->
-    <UCard>
-      <template #header>
-        <h2 class="text-xl font-bold">
-          Quick Actions
-        </h2>
-      </template>
-
-      <div class="grid gap-4 sm:grid-cols-2">
-        <UButton
-          variant="outline"
-          size="lg"
-          block
-          icon="i-lucide-plus"
-          @click="isOpen = true"
-        >
-          Add Subscription
-        </UButton>
-        <UButton
-          to="/app/subscriptions"
-          variant="outline"
-          size="lg"
-          block
-          icon="i-lucide-list"
-        >
-          View All Subscriptions
-        </UButton>
-      </div>
-    </UCard>
-
     <!-- Add Subscription Modal -->
-    <UModal v-model="isOpen">
-      <UCard class="max-w-md">
-        <template #header>
-          <h3 class="text-lg font-bold">
-            Add Subscription
-          </h3>
-        </template>
-
+    <UModal v-model:open="isOpen" title="Add Subscription">
+      <template #body>
         <UForm
           :schema="schema"
           :state="state"
@@ -391,7 +355,7 @@ useSeoMeta({
             </UButton>
           </div>
         </UForm>
-      </UCard>
+      </template>
     </UModal>
   </div>
 </template>

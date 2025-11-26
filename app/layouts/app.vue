@@ -13,11 +13,6 @@ const links = [
     icon: 'i-lucide-credit-card',
     to: '/app/subscriptions',
   },
-  {
-    label: 'Settings',
-    icon: 'i-lucide-settings',
-    to: '/app/settings',
-  },
 ]
 
 async function handleSignOut() {
@@ -58,17 +53,23 @@ async function handleSignOut() {
           </nav>
 
           <!-- User Menu -->
-          <UDropdown
+          <UDropdownMenu
             v-if="user"
             :items="[
               [
                 {
                   label: user.email,
                   icon: 'i-lucide-user',
+                  type: 'label',
                   disabled: true,
                 },
               ],
               [
+                {
+                  label: 'Profile',
+                  icon: 'i-lucide-user-circle',
+                  to: '/app/profile',
+                },
                 {
                   label: 'Settings',
                   icon: 'i-lucide-settings',
@@ -79,10 +80,11 @@ async function handleSignOut() {
                 {
                   label: 'Sign out',
                   icon: 'i-lucide-log-out',
-                  click: handleSignOut,
+                  onSelect: handleSignOut,
                 },
               ],
             ]"
+            :ui="{ content: 'w-48' }"
           >
             <UButton
               icon="i-lucide-user"
@@ -91,7 +93,7 @@ async function handleSignOut() {
             >
               Account
             </UButton>
-          </UDropdown>
+          </UDropdownMenu>
         </div>
       </div>
     </header>
