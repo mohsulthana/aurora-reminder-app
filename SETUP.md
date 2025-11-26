@@ -100,7 +100,46 @@ create trigger set_updated_at
   execute function handle_updated_at();
 ```
 
-### 4. Run Development Server
+### 4. Configure OAuth Providers (Optional)
+
+#### Google Authentication
+
+1. **Create Google OAuth App:**
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Create a new project or select an existing one
+   - Enable Google+ API (if not already enabled)
+   - Go to "Credentials" and create "OAuth 2.0 Client ID"
+   - Application type: Web application
+   - Add authorized redirect URI: `https://[YOUR-PROJECT-REF].supabase.co/auth/v1/callback`
+   - Copy the Client ID and Client Secret
+
+2. **Configure in Supabase:**
+   - Go to Authentication > Providers in your Supabase dashboard
+   - Find "Google" and toggle it on
+   - Paste your Client ID and Client Secret
+   - Click Save
+
+#### GitHub Authentication
+
+1. **Create GitHub OAuth App:**
+   - Go to GitHub Settings > Developer settings > OAuth Apps
+   - Click "New OAuth App"
+   - Fill in the form:
+     - Application name: Your app name
+     - Homepage URL: `http://localhost:3000` (for dev)
+     - Authorization callback URL: `https://[YOUR-PROJECT-REF].supabase.co/auth/v1/callback`
+   - Register application
+   - Copy the Client ID and generate a Client Secret
+
+2. **Configure in Supabase:**
+   - Go to Authentication > Providers in your Supabase dashboard
+   - Find "GitHub" and toggle it on
+   - Paste your Client ID and Client Secret
+   - Click Save
+
+**Note:** Replace `[YOUR-PROJECT-REF]` with your actual Supabase project reference ID found in your project settings.
+
+### 5. Run Development Server
 
 ```bash
 pnpm dev
@@ -140,10 +179,13 @@ app/
 
 ### Authentication
 
-- Email/password registration and login
+- **Email/Password**: Traditional email and password authentication
+- **Google OAuth**: Sign in with Google (optional, requires setup)
+- **GitHub OAuth**: Sign in with GitHub (optional, requires setup)
 - Protected routes with middleware
-- Session persistence
+- Session persistence across page reloads
 - Automatic redirect logic
+- Auth state synchronization
 
 ### Dashboard
 

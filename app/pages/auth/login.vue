@@ -5,7 +5,7 @@ definePageMeta({
   layout: 'auth',
 })
 
-const { signIn } = useAuth()
+const { signIn, signInWithGoogle, signInWithGithub } = useAuth()
 const router = useRouter()
 
 const schema = z.object({
@@ -35,6 +35,22 @@ async function onSubmit(event: { data: Schema }) {
   }
   else {
     await router.push('/app')
+  }
+}
+
+async function handleGoogleSignIn() {
+  error.value = ''
+  const { error: signInError } = await signInWithGoogle()
+  if (signInError) {
+    error.value = (signInError as Error).message || 'Failed to sign in with Google'
+  }
+}
+
+async function handleGithubSignIn() {
+  error.value = ''
+  const { error: signInError } = await signInWithGithub()
+  if (signInError) {
+    error.value = (signInError as Error).message || 'Failed to sign in with GitHub'
   }
 }
 
@@ -109,6 +125,40 @@ useSeoMeta({
           Sign in
         </UButton>
       </UForm>
+
+      <div class="relative my-6">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-200 dark:border-gray-800" />
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="bg-white px-2 text-gray-500 dark:bg-gray-900 dark:text-gray-400">
+            Or continue with
+          </span>
+        </div>
+      </div>
+
+      <div class="grid gap-3">
+        <UButton
+          variant="outline"
+          block
+          size="lg"
+          icon="i-simple-icons-google"
+          :loading="loading"
+          @click="handleGoogleSignIn"
+        >
+          Google
+        </UButton>
+        <UButton
+          variant="outline"
+          block
+          size="lg"
+          icon="i-simple-icons-github"
+          :loading="loading"
+          @click="handleGithubSignIn"
+        >
+          GitHub
+        </UButton>
+      </div>
 
       <template #footer>
         <div class="text-center text-sm text-gray-500 dark:text-gray-400">

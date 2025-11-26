@@ -83,6 +83,50 @@ export function useAuth() {
     }
   }
 
+  const signInWithGoogle = async () => {
+    loading.value = true
+    try {
+      const { data, error } = await $supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/app`,
+        },
+      })
+      if (error)
+        throw error
+      return { data, error: null }
+    }
+    catch (error) {
+      console.error('Error signing in with Google:', error)
+      return { data: null, error }
+    }
+    finally {
+      loading.value = false
+    }
+  }
+
+  const signInWithGithub = async () => {
+    loading.value = true
+    try {
+      const { data, error } = await $supabase.auth.signInWithOAuth({
+        provider: 'github',
+        options: {
+          redirectTo: `${window.location.origin}/app`,
+        },
+      })
+      if (error)
+        throw error
+      return { data, error: null }
+    }
+    catch (error) {
+      console.error('Error signing in with GitHub:', error)
+      return { data: null, error }
+    }
+    finally {
+      loading.value = false
+    }
+  }
+
   // Listen to auth state changes
   if (import.meta.client) {
     $supabase.auth.onAuthStateChange((event, session) => {
@@ -96,6 +140,8 @@ export function useAuth() {
     signIn,
     signUp,
     signOut,
+    signInWithGoogle,
+    signInWithGithub,
     loadUser,
   }
 }

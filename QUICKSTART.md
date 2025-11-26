@@ -91,7 +91,9 @@ create trigger set_updated_at
 
 5. Click "Run" to execute the SQL
 
-## Step 5: Configure Email Authentication (Optional but Recommended)
+## Step 5: Configure Authentication Providers
+
+### Email Authentication (Optional)
 
 For development, you may want to disable email confirmation:
 
@@ -101,6 +103,36 @@ For development, you may want to disable email confirmation:
 4. Click Save
 
 **Note:** For production, keep email confirmation enabled!
+
+### Google OAuth (Optional)
+
+To enable Google sign-in:
+
+1. Go to Authentication > Providers in your Supabase dashboard
+2. Find "Google" and enable it
+3. You'll need to create a Google OAuth app:
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Create a new project or select existing one
+   - Go to APIs & Services > Credentials
+   - Create OAuth 2.0 Client ID
+   - Add authorized redirect URI: `https://[YOUR-PROJECT-REF].supabase.co/auth/v1/callback`
+   - Copy Client ID and Client Secret
+4. Paste the Client ID and Client Secret in Supabase
+5. Click Save
+
+### GitHub OAuth (Optional)
+
+To enable GitHub sign-in:
+
+1. Go to Authentication > Providers in your Supabase dashboard
+2. Find "GitHub" and enable it
+3. Create a GitHub OAuth app:
+   - Go to GitHub Settings > Developer settings > OAuth Apps
+   - Click "New OAuth App"
+   - Add callback URL: `https://[YOUR-PROJECT-REF].supabase.co/auth/v1/callback`
+   - Copy Client ID and generate Client Secret
+4. Paste the Client ID and Client Secret in Supabase
+5. Click Save
 
 ## Step 6: Run the Development Server
 
