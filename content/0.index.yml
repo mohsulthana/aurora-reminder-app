@@ -1,8 +1,8 @@
-title: Ship Your [SaaS]{class="text-primary"} at light speed
-description: Build production-ready SaaS applications with Nuxt UI's powerful components, authentication flows, and enterprise features. The same component library trusted by the entire Nuxt ecosystem.
+title: Never Miss a [Subscription]{class="text-primary"} Payment Again
+description: Track all your recurring subscriptions in one place. Get reminders for upcoming payments, monitor your monthly costs, and take control of your subscription spending.
 seo:
-  title: Nuxt UI SaaS Template
-  description: Create stunning, fast and production-ready SaaS applications with Nuxt UI. 100+ Vue components, authentication, dark mode, and enterprise features built on Tailwind CSS.
+  title: SubTracker - Subscription Management Made Easy
+  description: Track and manage all your recurring subscriptions in one place. Never forget a payment or miss a cancellation deadline again.
 navigation: false
 hero:
   links:
@@ -20,131 +20,129 @@ hero:
       to: https://github.com/nuxt-ui-templates/saas
       target: _blank
 sections:
-  - title: Powered by Nuxt UI Components
-    description: Access the complete Nuxt UI component library with 100+ beautifully styled, accessible, and customizable Vue components. Everything you need to build professional SaaS applications.
+  - title: Simple Subscription Tracking
+    description: All your subscriptions in one dashboard. See exactly what you're paying for and when your next payment is due.
     id: features
     orientation: horizontal
     features:
-      - name: 100+ UI Components
-        description: From buttons to modals, data tables to forms - all styled with Tailwind CSS and accessible out of the box.
-        icon: i-lucide-package
-      - name: Authentication Ready
-        description: Pre-built login, signup, and password reset flows. Just connect your backend and start onboarding users.
-        icon: i-lucide-shield
-      - name: TypeScript First
-        description: Full TypeScript support with auto-completion, type safety, and IntelliSense for every component and composable.
-        icon: i-lucide-code-2
-  - title: Built for Modern SaaS
-    description: Everything you need to launch and scale your SaaS. From beautiful marketing pages to complex dashboards, ship faster with production-ready patterns.
+      - name: Centralized Dashboard
+        description: View all your subscriptions at a glance. Track active, upcoming, and cancelled services in one place.
+        icon: i-lucide-layout-dashboard
+      - name: Payment Reminders
+        description: Never miss a payment deadline. Get notified before each billing cycle so you're always prepared.
+        icon: i-lucide-bell
+      - name: Cost Analysis
+        description: See your total monthly, weekly, and yearly subscription costs. Identify spending patterns and save money.
+        icon: i-lucide-trending-up
+  - title: Take Control of Your Spending
+    description: Stop losing track of subscriptions. Know exactly where your money is going and make informed decisions about what to keep or cancel.
     orientation: horizontal
     reverse: true
     features:
-      - name: Edge Performance
-        description: Optimized for Core Web Vitals with automatic code splitting, lazy loading, and SSR/SSG support.
-        icon: i-lucide-zap
-      - name: Dark Mode Ready
-        description: Automatic theme switching with smooth transitions. Respects system preferences and remembers user choice.
-        icon: i-lucide-moon
-      - name: Global Ready
-        description: Built-in i18n support for 50+ languages with RTL/LTR layouts and @nuxt/fonts integration.
-        icon: i-lucide-globe
+      - name: Multiple Currencies
+        description: Track subscriptions in any currency. Perfect for international services and global payments.
+        icon: i-lucide-dollar-sign
+      - name: Flexible Billing Cycles
+        description: Support for weekly, monthly, and yearly billing. Track any type of recurring payment.
+        icon: i-lucide-calendar
+      - name: Secure & Private
+        description: Your data is encrypted and secure. Only you can access your subscription information.
+        icon: i-lucide-shield
 features:
-  title: Everything You Need to Ship
-  description: Stop building from scratch. Focus on your unique features while Nuxt UI handles the foundations with battle-tested components and patterns.
+  title: Everything You Need to Manage Subscriptions
+  description: Simple, powerful tools to help you track and manage all your recurring payments in one place.
   items:
-    - title: Beautiful Design System
-      description: Semantic color aliases, comprehensive design tokens, and Tailwind Variants for consistent, customizable styling.
-      icon: i-lucide-palette
-    - title: Accessible by Default
-      description: Built on Reka UI for robust accessibility. WCAG compliant components that work for everyone, everywhere.
-      icon: i-lucide-accessibility
-    - title: Developer Experience
-      description: Auto-imports, hot module replacement, and comprehensive documentation. Build faster with less friction.
-      icon: i-lucide-terminal
-    - title: SEO Optimized
-      description: Server-side rendering, automatic meta tags, sitemap generation, and Open Graph images out of the box.
-      icon: i-lucide-search
-    - title: Production Ready
-      description: Error handling, loading states, form validation, and security best practices built into every component.
-      icon: i-lucide-check-circle
-    - title: Infinitely Customizable
-      description: Override any style with the ui prop, customize globally with AppConfig, or use Tailwind classes directly.
-      icon: i-lucide-settings
+    - title: Easy to Use
+      description: Intuitive interface that makes adding and managing subscriptions a breeze. Get started in minutes.
+      icon: i-lucide-zap
+    - title: Smart Notifications
+      description: Get timely reminders before payments are due. Never be caught off guard by an unexpected charge.
+      icon: i-lucide-bell-ring
+    - title: Visual Dashboard
+      description: Beautiful charts and insights show your spending patterns. Make data-driven decisions about your subscriptions.
+      icon: i-lucide-bar-chart
+    - title: Mobile Friendly
+      description: Access your subscriptions anywhere, anytime. Responsive design works perfectly on all devices.
+      icon: i-lucide-smartphone
+    - title: Secure Storage
+      description: Bank-level encryption keeps your data safe. We never store payment information, only subscription details.
+      icon: i-lucide-lock
+    - title: Export & Reports
+      description: Download your subscription data anytime. Generate reports for budgeting and expense tracking.
+      icon: i-lucide-download
 testimonials:
-  headline: Trusted by Developers
-  title: Join Thousands Building with Nuxt UI
-  description: See why developers choose Nuxt UI to ship their SaaS applications faster and with more confidence.
+  headline: Loved by Users
+  title: Join Thousands Taking Control of Their Subscriptions
+  description: See why people choose SubTracker to manage their recurring payments and save money.
   items:
-    - quote: Nuxt UI transformed how we build. The component quality is exceptional - everything just works with perfect TypeScript support, accessibility, and dark mode built in.
+    - quote: I discovered I was spending over $200/month on subscriptions I barely used! SubTracker helped me cut my monthly costs by 60%.
       user:
         name: Sarah Chen
-        description: CTO at TechScale Solutions
+        description: Freelance Designer
         avatar:
           src: https://i.pravatar.cc/120?img=1
-    - quote: We shipped our MVP in 2 weeks instead of 2 months. The authentication flows and form components saved us countless hours of development time.
+    - quote: Finally, all my subscriptions in one place. No more surprise charges or forgotten trial periods. This app is a lifesaver!
       user:
         name: Marcus Rodriguez
-        description: VP of Engineering at DataFlow
+        description: Software Developer
         avatar:
           src: https://i.pravatar.cc/120?img=7
-    - quote: The design system with AppConfig is brilliant. We maintain brand consistency across all our products while leveraging the full component library.
+    - quote: The reminders are perfect. I get notified a few days before each payment, giving me time to decide if I still need the service.
       user:
         name: David Kumar
-        description: Security Director at SecureStack
+        description: Product Manager
         avatar:
           src: https://i.pravatar.cc/120?img=3
-    - quote: Perfect Lighthouse scores out of the box. Our Core Web Vitals improved dramatically just by switching to Nuxt UI components.
+    - quote: Love the clean interface! Adding subscriptions is super quick, and the dashboard shows exactly what I need to know at a glance.
       user:
         name: Emily Zhang
-        description: Lead Architect at ScaleForce
+        description: Marketing Director
         avatar:
           src: https://i.pravatar.cc/120?img=5
-    - quote: The Tailwind Variants system makes customization so intuitive. We can override any component style while keeping the functionality intact.
+    - quote: I track all my family's subscriptions here - from streaming services to gym memberships. Total game changer for budgeting!
       user:
         name: James Wilson
-        description: DevOps Lead at CloudPro
+        description: Financial Advisor
         avatar:
           src: https://i.pravatar.cc/120?img=8
-    - quote: From the SaaS template to production in days. The pre-built layouts, navigation, and content structure accelerated our launch.
+    - quote: The mobile app works great! I can check my subscriptions while on the go and make quick decisions about what to keep or cancel.
       user:
         name: Lisa Patel
-        description: CEO at AutoScale
+        description: Small Business Owner
         avatar:
           src: https://i.pravatar.cc/120?img=9
-    - quote: Reka UI foundation means accessibility is never an afterthought. We achieved WCAG compliance without any custom work.
+    - quote: Used to have subscriptions scattered across different apps and cards. Now everything is organized and I'm saving money every month.
       user:
         name: Michael Torres
-        description: Frontend Lead at AccessFirst
+        description: College Student
         avatar:
           src: https://i.pravatar.cc/120?img=11
-    - quote: The documentation is outstanding. Every component has clear examples, and the community on Discord is incredibly helpful.
+    - quote: The cost analysis feature opened my eyes. I had no idea how much those 'small' monthly payments were adding up!
       user:
         name: Rachel Kim
-        description: Performance Engineer at APIHub
+        description: Content Creator
         avatar:
           src: https://i.pravatar.cc/120?img=10
-    - quote: We replaced three different UI libraries with Nuxt UI. The consistency and quality across all components is unmatched.
+    - quote: Simple, secure, and exactly what I needed. No complicated features, just straightforward subscription tracking.
       user:
         name: Thomas Weber
-        description: UI Architecture Lead at DesignScale
+        description: Retired Teacher
         avatar:
           src: https://i.pravatar.cc/120?img=12
-    - quote: The integration with Nuxt modules is seamless. Color mode, fonts, icons - everything works together perfectly.
+    - quote: The dark mode is beautiful and the whole app feels modern and fast. Plus, my data stays private which is a huge plus.
       user:
         name: Sophia Martinez
-        description: Integration Specialist at TechFlow
+        description: Privacy Consultant
         avatar:
           src: https://i.pravatar.cc/120?img=14
 cta:
-  title: Ready to build an amazing SaaS?
-  description: Join thousands of developers building with Nuxt and Nuxt UI. Get this template and start shipping today.
+  title: Ready to take control of your subscriptions?
+  description: Join thousands of users who are saving money and staying organized with SubTracker. Get started today for free!
   links:
-    - label: Start building
-      to: 'https://ui.nuxt.com/docs/getting-started/installation/nuxt'
-      target: _blank
+    - label: Get Started Free
+      to: /auth/signup
       trailingIcon: i-lucide-arrow-right
-    - label: View on GitHub
-      to: 'https://github.com/nuxt-ui-templates/saas'
-      target: _blank
+    - label: Learn More
+      to: /docs/getting-started
       variant: subtle
-      icon: i-simple-icons-github
+      icon: i-lucide-book-open

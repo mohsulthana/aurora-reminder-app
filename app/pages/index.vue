@@ -9,7 +9,63 @@ useSeoMeta({
   title,
   ogTitle: title,
   description,
-  ogDescription: description
+  ogDescription: description,
+})
+
+const { user } = useAuth()
+
+const heroLinks = computed(() => {
+  if (user.value) {
+    return [{
+      label: 'Go to Dashboard',
+      icon: 'i-lucide-layout-dashboard',
+      trailing: true,
+      to: '/dashboard',
+      size: 'xl' as const,
+    }]
+  }
+
+  return [{
+    label: 'Get started',
+    icon: 'i-lucide-arrow-right',
+    trailing: true,
+    to: '/signup',
+    size: 'xl' as const,
+  }, {
+    label: 'Sign in',
+    icon: 'i-lucide-log-in',
+    size: 'xl' as const,
+    variant: 'subtle' as const,
+    color: 'neutral' as const,
+    to: '/login',
+  }]
+})
+
+const ctaLinks = computed(() => {
+  if (user.value) {
+    return [{
+      label: 'Go to Dashboard',
+      icon: 'i-lucide-layout-dashboard',
+      trailing: true,
+      to: '/dashboard',
+      size: 'xl' as const,
+    }]
+  }
+
+  return [{
+    label: 'Get started',
+    icon: 'i-lucide-arrow-right',
+    trailing: true,
+    to: '/signup',
+    size: 'xl' as const,
+  }, {
+    label: 'Sign in',
+    icon: 'i-lucide-log-in',
+    size: 'xl' as const,
+    variant: 'subtle' as const,
+    color: 'neutral' as const,
+    to: '/login',
+  }]
 })
 </script>
 
@@ -18,7 +74,7 @@ useSeoMeta({
     <UPageHero
       :title="page.title"
       :description="page.description"
-      :links="page.hero.links"
+      :links="heroLinks"
     >
       <template #top>
         <HeroBackground />
@@ -31,7 +87,7 @@ useSeoMeta({
         />
       </template>
 
-      <PromotionalVideo />
+      <ImagePlaceholder />
     </UPageHero>
 
     <UPageSection
@@ -88,6 +144,7 @@ useSeoMeta({
 
     <UPageCTA
       v-bind="page.cta"
+      :links="ctaLinks"
       variant="naked"
       class="overflow-hidden"
     >
