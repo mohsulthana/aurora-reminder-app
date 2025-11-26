@@ -1,7 +1,7 @@
 title: Never Miss a [Subscription]{class="text-primary"} Payment Again
 description: Track all your recurring subscriptions in one place. Get reminders for upcoming payments, monitor your monthly costs, and take control of your subscription spending.
 seo:
-  title: SubTracker - Subscription Management Made Easy
+  title: Aurora - Subscription Management Made Easy
   description: Track and manage all your recurring subscriptions in one place. Never forget a payment or miss a cancellation deadline again.
 navigation: false
 hero:
@@ -73,9 +73,9 @@ features:
 testimonials:
   headline: Loved by Users
   title: Join Thousands Taking Control of Their Subscriptions
-  description: See why people choose SubTracker to manage their recurring payments and save money.
+  description: See why people choose Aurora to manage their recurring payments and save money.
   items:
-    - quote: I discovered I was spending over $200/month on subscriptions I barely used! SubTracker helped me cut my monthly costs by 60%.
+    - quote: I discovered I was spending over $200/month on subscriptions I barely used! Aurora helped me cut my monthly costs by 60%.
       user:
         name: Sarah Chen
         description: Freelance Designer
@@ -137,7 +137,7 @@ testimonials:
           src: https://i.pravatar.cc/120?img=14
 cta:
   title: Ready to take control of your subscriptions?
-  description: Join thousands of users who are saving money and staying organized with SubTracker. Get started today for free!
+  description: Join thousands of users who are saving money and staying organized with Aurora. Get started today for free!
   links:
     - label: Get Started Free
       to: /auth/signup

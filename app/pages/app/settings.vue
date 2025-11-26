@@ -97,7 +97,7 @@ useSeoMeta({
 
       <div class="space-y-2">
         <p class="text-sm text-gray-600 dark:text-gray-400">
-          SubTracker helps you manage all your recurring subscriptions in one place.
+          Aurora helps you manage all your recurring subscriptions in one place.
         </p>
         <p class="text-sm text-gray-600 dark:text-gray-400">
           Track your monthly costs, get reminders for upcoming payments, and never forget to cancel unwanted subscriptions.
