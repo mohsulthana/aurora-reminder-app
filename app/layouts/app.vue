@@ -29,7 +29,7 @@ async function handleSignOut() {
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-950">
     <!-- Top Navigation Bar -->
-    <header class="sticky top-0 z-50 border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
+    <header class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
           <!-- Logo/Brand -->
@@ -70,6 +70,13 @@ async function handleSignOut() {
               ],
               [
                 {
+                  label: 'Settings',
+                  icon: 'i-lucide-settings',
+                  to: '/app/settings',
+                },
+              ],
+              [
+                {
                   label: 'Sign out',
                   icon: 'i-lucide-log-out',
                   click: handleSignOut,
@@ -90,9 +97,9 @@ async function handleSignOut() {
     </header>
 
     <!-- Main Content -->
-    <UMain class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <main class="flex-1 mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <slot />
-    </UMain>
+    </main>
 
     <!-- Mobile Navigation -->
     <nav class="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 md:hidden">

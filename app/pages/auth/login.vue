@@ -91,6 +91,7 @@ useSeoMeta({
             placeholder="you@example.com"
             icon="i-lucide-mail"
             size="lg"
+            class="w-full"
           />
         </UFormField>
 
@@ -105,6 +106,7 @@ useSeoMeta({
             placeholder="••••••••"
             icon="i-lucide-lock"
             size="lg"
+            class="w-full"
           />
         </UFormField>
 

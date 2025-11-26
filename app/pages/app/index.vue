@@ -1,12 +1,65 @@
 <script setup lang="ts">
+import type { BillingCycle } from '~/composables/useSubscriptions'
+import { z } from 'zod'
+
 definePageMeta({
   layout: 'app',
 })
 
-const { subscriptions, fetchSubscriptions, loading } = useSubscriptions()
+const { subscriptions, fetchSubscriptions, createSubscription, loading } = useSubscriptions()
+
+// Modal state
+const isOpen = ref(false)
+const isSubmitting = ref(false)
+
+const schema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  amount: z.number().min(0, 'Amount must be positive'),
+  currency: z.string().min(3, 'Currency is required'),
+  billing_cycle: z.enum(['weekly', 'monthly', 'yearly']),
+  next_billing_date: z.string().min(1, 'Next billing date is required'),
+  status: z.enum(['active', 'cancelled']),
+})
+
+type Schema = z.output<typeof schema>
+
+const state = reactive({
+  name: '',
+  amount: 0,
+  currency: 'USD',
+  billing_cycle: 'monthly' as BillingCycle,
+  next_billing_date: new Date().toISOString().split('T')[0],
+  status: 'active' as 'active' | 'cancelled',
+})
+
+async function onSubmit(event: { data: Schema }) {
+  isSubmitting.value = true
+  const { error } = await createSubscription(event.data)
+
+  if (!error) {
+    isOpen.value = false
+    // Reset form
+    Object.assign(state, {
+      name: '',
+      amount: 0,
+      currency: 'USD',
+      billing_cycle: 'monthly',
+      next_billing_date: new Date().toISOString().split('T')[0],
+      status: 'active',
+    })
+    // Refresh subscriptions list
+    await fetchSubscriptions()
+  }
+
+  isSubmitting.value = false
+}
 
 // Fetch subscriptions on mount
 onMounted(async () => {
+  // Scroll to top on mount
+  if (import.meta.client) {
+    window.scrollTo(0, 0)
+  }
   await fetchSubscriptions()
 })
 
@@ -56,19 +109,19 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="space-y-6">
+  <div class="w-full space-y-6 pb-20 md:pb-0">
     <!-- Welcome Header -->
-    <div>
-      <h1 class="text-3xl font-bold">
+    <div class="w-full">
+      <h1 class="text-2xl font-bold sm:text-3xl">
         Welcome back!
       </h1>
-      <p class="mt-2 text-gray-500 dark:text-gray-400">
+      <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 sm:text-base">
         Here's what's happening with your subscriptions
       </p>
     </div>
 
     <!-- Stats Cards -->
-    <div class="grid gap-6 md:grid-cols-3">
+    <div class="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <UCard>
         <div class="flex items-center justify-between">
           <div>
@@ -122,7 +175,7 @@ useSeoMeta({
     </div>
 
     <!-- Upcoming Payments -->
-    <UCard>
+    <UCard class="overflow-visible">
       <template #header>
         <div class="flex items-center justify-between">
           <h2 class="text-xl font-bold">
@@ -132,6 +185,7 @@ useSeoMeta({
             to="/app/subscriptions"
             variant="ghost"
             trailing-icon="i-lucide-arrow-right"
+            size="xs"
           >
             View all
           </UButton>
@@ -160,8 +214,8 @@ useSeoMeta({
           No upcoming payments in the next 30 days
         </p>
         <UButton
-          to="/app/subscriptions"
           class="mt-4"
+          @click="isOpen = true"
         >
           Add a subscription
         </UButton>
@@ -206,11 +260,11 @@ useSeoMeta({
 
       <div class="grid gap-4 sm:grid-cols-2">
         <UButton
-          to="/app/subscriptions"
           variant="outline"
           size="lg"
           block
           icon="i-lucide-plus"
+          @click="isOpen = true"
         >
           Add Subscription
         </UButton>
@@ -225,5 +279,119 @@ useSeoMeta({
         </UButton>
       </div>
     </UCard>
+
+    <!-- Add Subscription Modal -->
+    <UModal v-model="isOpen">
+      <UCard class="max-w-md">
+        <template #header>
+          <h3 class="text-lg font-bold">
+            Add Subscription
+          </h3>
+        </template>
+
+        <UForm
+          :schema="schema"
+          :state="state"
+          class="space-y-4"
+          @submit="onSubmit"
+        >
+          <UFormField
+            label="Name"
+            name="name"
+            required
+          >
+            <UInput
+              v-model="state.name"
+              placeholder="Netflix, Spotify, etc."
+            />
+          </UFormField>
+
+          <div class="grid grid-cols-2 gap-4">
+            <UFormField
+              label="Amount"
+              name="amount"
+              required
+            >
+              <UInput
+                v-model.number="state.amount"
+                type="number"
+                step="0.01"
+                min="0"
+              />
+            </UFormField>
+
+            <UFormField
+              label="Currency"
+              name="currency"
+              required
+            >
+              <UInput
+                v-model="state.currency"
+                placeholder="USD"
+              />
+            </UFormField>
+          </div>
+
+          <UFormField
+            label="Billing Cycle"
+            name="billing_cycle"
+            required
+          >
+            <USelect
+              v-model="state.billing_cycle"
+              :options="[
+                { label: 'Weekly', value: 'weekly' },
+                { label: 'Monthly', value: 'monthly' },
+                { label: 'Yearly', value: 'yearly' },
+              ]"
+              option-attribute="label"
+              value-attribute="value"
+            />
+          </UFormField>
+
+          <UFormField
+            label="Next Billing Date"
+            name="next_billing_date"
+            required
+          >
+            <UInput
+              v-model="state.next_billing_date"
+              type="date"
+            />
+          </UFormField>
+
+          <UFormField
+            label="Status"
+            name="status"
+            required
+          >
+            <USelect
+              v-model="state.status"
+              :options="[
+                { label: 'Active', value: 'active' },
+                { label: 'Cancelled', value: 'cancelled' },
+              ]"
+              option-attribute="label"
+              value-attribute="value"
+            />
+          </UFormField>
+
+          <div class="flex justify-end gap-2">
+            <UButton
+              variant="outline"
+              @click="isOpen = false"
+            >
+              Cancel
+            </UButton>
+            <UButton
+              type="submit"
+              :loading="isSubmitting"
+            >
+              Add Subscription
+            </UButton>
+          </div>
+        </UForm>
+      </UCard>
+    </UModal>
   </div>
 </template>

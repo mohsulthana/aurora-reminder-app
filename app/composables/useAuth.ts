@@ -10,12 +10,21 @@ export function useAuth() {
     loading.value = true
     try {
       const { data: { user: currentUser }, error } = await $supabase.auth.getUser()
-      if (error)
-        throw error
+      if (error) {
+        // Ignore AuthSessionMissingError as it's expected when not logged in
+        if (error.message !== 'Auth session missing!') {
+          console.error('Error loading user:', error)
+        }
+        user.value = null
+        return
+      }
       user.value = currentUser
     }
-    catch (error) {
-      console.error('Error loading user:', error)
+    catch (error: any) {
+      // Ignore AuthSessionMissingError as it's expected when not logged in
+      if (error?.message !== 'Auth session missing!') {
+        console.error('Error loading user:', error)
+      }
       user.value = null
     }
     finally {
